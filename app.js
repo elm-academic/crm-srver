@@ -1,4 +1,3 @@
-import cors from 'cors';
 const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
@@ -9,7 +8,8 @@ const indexRouter = require('./routes/index');
 const clientsRouter = require('./routes/clients');
 const projectsRouter = require('./routes/projects');
 const dashboardRouter = require ('./routes/dashboard');
-
+const cors = require('cors');
+app.use(cors());
 
 
 // const dashboardRouter = require('./routes/dashboard');
@@ -25,7 +25,6 @@ app.set('view engine', 'ejs');
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cors());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
